@@ -1,4 +1,6 @@
 class Building < ApplicationRecord
+  has_many :offices
+  has_many :companies, through: :offices
 
   def number_of_floors_available
     # Will not work until relationships and schema are corretly setup
@@ -8,6 +10,14 @@ class Building < ApplicationRecord
       all_floors.delete(office.floor)
     end
     all_floors
+  end
+
+  def total_offices
+    self.offices.count
+  end
+  
+  def total_rent
+    total_offices * self.rent_per_floor
   end
 
   def empty_offices
