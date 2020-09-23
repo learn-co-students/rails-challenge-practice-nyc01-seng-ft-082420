@@ -1,0 +1,10 @@
+<h1> COMPANIES </h1>
+
+<% @companies.each do |c| %>
+    <h3><%= link_to c.name, company_path(c) %></h3>
+        
+        <% end %>
+
+        
+        <a href="/companies/new"> <button>Create</button></a>
+        
